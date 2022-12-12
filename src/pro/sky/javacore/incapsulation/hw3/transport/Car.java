@@ -1,7 +1,6 @@
-package pro.sky.javacore.incapsulation.hw2.transport;
+package pro.sky.javacore.incapsulation.hw3.transport;
 
 import java.time.LocalDate;
-import java.time.Year;
 import java.util.regex.Pattern;
 
 public class Car {
@@ -17,9 +16,98 @@ public class Car {
     private final int seatsAmount;
     private boolean tiresIsSummer;
 
+    public static class Key {
+        private final boolean remoteEngineStart;
+        private final boolean keylessAccess;
+
+        public Key(boolean remoteEngineStart, boolean keylessAccess) {
+            this.remoteEngineStart = remoteEngineStart;
+            this.keylessAccess = keylessAccess;
+        }
+
+        public boolean isRemoteEngineStart() {
+            return remoteEngineStart;
+        }
+
+        public boolean isKeylessAccess() {
+            return keylessAccess;
+        }
+
+        public String printKeylessAccess() {
+            if (isRemoteEngineStart() == true) {
+                return "Key with remote engine start, ";
+            } else return "Key without remote engine start ";
+        }
+
+        public String printRemoteEngineStart() {
+            if (isKeylessAccess() == true) {
+                return " and with keyless access. ";
+            } else return " and without keyless access. ";
+        }
+
+        @Override
+        public String toString() {
+            return printKeylessAccess() + printRemoteEngineStart();
+        }
+    }
+
+    private Key key;
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        if (key == null) {
+            this.key = new Car.Key(false, false);
+        } else this.key = key;
+    }
+
+
+    public static class Insurance {
+        private final LocalDate expireDate;
+        private final double cost;
+        private final String number;
+
+        public Insurance(LocalDate expireDate, double cost, String number) {
+            if (expireDate == null) {
+                this.expireDate = LocalDate.now().plusDays(365);
+            } else this.expireDate = expireDate;
+            this.cost = cost;
+            if (number == null) {
+                this.number = "123456789";
+            }else this.number = number;
+        }
+
+        public void checkExpireDate() {
+            if (expireDate.isBefore(LocalDate.now()) || expireDate.isEqual(LocalDate.now())) {
+                System.out.println("You should purchase new insurance right now!");
+            }
+        }
+
+        public void checkNumber() {
+            if (number.length() != 9) {
+                System.out.println("Incorrect insurance number!");
+            }
+        }
+
+        public LocalDate getExpireDate() {
+            return expireDate;
+        }
+
+        public double getCost() {
+            return cost;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+    }
+
 
     public Car(String brand, String model, double engineVolume, String color, int year, String country,
-               String gearBox, String bodyType, String regNumber, int seatsAmount, boolean tiresIsSummer) {
+               String gearBox, String bodyType, String regNumber, int seatsAmount, boolean tiresIsSummer, Key key) {
+        setKey(key);
         if (checkString(brand) == true) {
             this.brand = "default brand";
         } else this.brand = brand;
