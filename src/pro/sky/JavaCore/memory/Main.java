@@ -9,6 +9,7 @@ public class Main {
         Person person = new Person("Lyapis", "Trubetskoy");
         personService.changePerson(person);
         System.out.println(person);
+
     }
 }
 
