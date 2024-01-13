@@ -1,4 +1,4 @@
-package JavaCore;
+package JavaCore.memory;
 
 public class Person {
     private String name;
@@ -7,6 +7,7 @@ public class Person {
     public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
+
     }
 
     public String getName() {

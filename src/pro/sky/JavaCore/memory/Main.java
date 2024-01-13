@@ -1,6 +1,4 @@
-package JavaCore;
-
-import java.lang.reflect.Array;
+package JavaCore.memory;
 
 /* задание 9 и 10
  */
@@ -11,6 +9,7 @@ public class Main {
         Person person = new Person("Lyapis", "Trubetskoy");
         personService.changePerson(person);
         System.out.println(person);
+
     }
 }
 
