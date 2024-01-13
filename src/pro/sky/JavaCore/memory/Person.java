@@ -1,4 +1,4 @@
-package JavaCore;
+package JavaCore.memory;
 
 public class Person {
     private String name;

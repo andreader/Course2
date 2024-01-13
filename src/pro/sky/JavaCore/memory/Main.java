@@ -1,6 +1,4 @@
-package JavaCore;
-
-import java.lang.reflect.Array;
+package JavaCore.memory;
 
 /* задание 9 и 10
  */
