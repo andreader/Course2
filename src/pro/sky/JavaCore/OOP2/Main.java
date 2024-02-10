@@ -2,25 +2,28 @@ package JavaCore.OOP2;
 
 public class Main {
     public static void main(String[] args) {
-        Vehicle[] vehicles = {
-                new Car(),
-                new Car(),
-                new Truck(),
-                new Truck(),
-                new Bicycle(),
-                new Bicycle(),
+        Bicycle forward = new Bicycle("Forward");
+        Bicycle kama = new Bicycle("Kama");
+
+        Car skoda = new Car("Skoda");
+        Car opel = new Car("Opel");
+
+        Truck kamaz = new Truck("Kamaz");
+        Truck volvo = new Truck("Volvo");
+
+        TransportService[] transports = {
+                forward,
+                kama,
+                skoda,
+                opel,
+                kamaz,
+                volvo
         };
 
-        ServiceStation station = new ServiceStation();
-        station.setModelWheels(vehicles, 0, "car1", 4);
-        station.setModelWheels(vehicles, 1, "car2", 4);
-        station.setModelWheels(vehicles, 2, "truck1", 6);
-        station.setModelWheels(vehicles, 3, "truck2", 8);
-        station.setModelWheels(vehicles, 4, "bicycle1", 2);
-        station.setModelWheels(vehicles, 5, "bicycle2", 2);
+        ServiceStation serviceStation = new ServiceStation();
 
-        for (Vehicle vehicle : vehicles) {
-            station.check(vehicle);
+        for (TransportService transport : transports) {
+            serviceStation.check(transport);
         }
     }
 }
